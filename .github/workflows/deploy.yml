@@ -22,3 +22,11 @@ jobs:
 
       - name: Login to ECR
         uses: aws-actions/amazon-ecr-login@v1
+        
+      - name: Build, tag, and push image to ECR
+        run: |
+          IMAGE_TAG=latest
+          ECR_URI=${{ secrets.ECR_URI }}
+
+          docker build -t $ECR_URI:$IMAGE_TAG .
+          docker push $ECR_URI:$IMAGE_TAG
