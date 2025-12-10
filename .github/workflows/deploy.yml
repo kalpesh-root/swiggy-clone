@@ -30,3 +30,12 @@ jobs:
 
           docker build -t $ECR_URI:$IMAGE_TAG .
           docker push $ECR_URI:$IMAGE_TAG
+      
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ecs-taskdef.json
+          service: swiggy-taskdef-service-lr22tguj
+          cluster: swiggy-clone-ECS
+          wait-for-service-stability: true
+
