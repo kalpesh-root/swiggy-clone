@@ -1,0 +1,21 @@
+{
+  "family": "swiggy-taskdef",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::475834860148:role/ecsTaskExecutionRole-swiggy",
+  "containerDefinitions": [
+    {
+      "name": "swiggy-clone-1",
+      "image": "<IMAGE_PLACEHOLDER>",
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
